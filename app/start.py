@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 
 application = Flask(__name__)
 
 
 @application.route("/")
 def inex():
-    return "<h1>OK</h1>", 200
+    return render_template("index.html")
