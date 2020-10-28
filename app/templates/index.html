@@ -3,5 +3,33 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-    <h1>Index page</h1>
+    <div id="title">
+        Bulk SMS Sender
+    </div>
+    <div id="disclaimer">
+        First, some important stuff:
+        <ul>
+            <li>This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
+            <li>This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
+            <li>You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us">this page</a></li>
+            <li>This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it</li>
+            <li>The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender">GitHub</a></li>
+        </ul>
+    </div>
+    <div id="instructions">
+        How it works: you simply download a sample spreadsheet, fill it with your data, upload it to us with your tokens and we'll use <a href="https://www.twilio.com/docs/sms/api">Twilio's Messaging API</a> to send your SMS in bulk. Once it's done we'll show you a delivery report. Here's the detailed steps:
+        <ol>
+            <li>You'll need a Twilio account for this. Sign up for free at <a href="https://www.twilio.com/try-twilio">Twilio</a></li>
+            <li>Download the sample spreadsheet HERE. (Google Sheets integration coming soon)</li>
+            <li>Fill the spreadsheet with your data (phone numbers, message, etc). Please don't change the sheet's format or it won't work!</li>
+            <li>Make sure to add all phone numbers on the international format (+15551234)</li>
+            <li>Once you are finished filling your data upload the file using the button below</li>
+            <li>The file will be checked and, if everything's alright, you'll be taken to a screen to provide your Twilio credentials. You should really use Tokens! Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it </li>
+            <li>We'll use your tokens to send your messages through Twilio's API. Once it's finished we'll display a delivery report to you</li>
+            <li>Rinse and repeat</li>
+        </ol>
+    </div>
+    <div id="upload_form">
+        Form goes here
+    </div>
 {% endblock %}
