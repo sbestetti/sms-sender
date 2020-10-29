@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+    <div class="title">
+        Messages sent
+    </div>
+    <div class="instructions">
+        <p>
+            Your messages were succesfully sent!
+        </p>
+    </div>
+    <div class="report">
+        <table>
+            <tr>
+                <th>Number</th>
+                <th>Message</th>
+                <th>SID</th>
+            </tr>
+            {% for item in number_list %}
+                <tr>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

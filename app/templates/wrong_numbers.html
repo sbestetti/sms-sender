@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Wrong numbers{% endblock %}
+
+{% block content %}
+    <div class="title">
+        Incorrect numbers
+    </div>
+    <div class="instructions">
+        <p>
+            Some of the numbers on your list couldn't be found. Please check them to make sure they are on the correct format (+15551234...) and try again.
+        </p>
+    </div>
+    <div class="report">
+        <ul>
+            {% for number in number_list %}
+                <li>{{ number[0] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

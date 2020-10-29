@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, flash, redirect, render_template
 from werkzeug.utils import secure_filename
 
-import runner
+import tools
 
 application = Flask(__name__)
 application.config.from_object("settings")
@@ -37,6 +37,14 @@ def index():
                     filename
                 )
             )
-            runner.process_file(filename)
-            return "File uploaded", 200
+
+            number_list = tools.get_number_list(filename)
+            wrong_numbers = tools.check_numbers(number_list)
+
+            if wrong_numbers:
+                return render_template("wrong_numbers.html", number_list=wrong_numbers)
+
+            number_list = tools.send_messages(number_list)
+            return render_template("report.html", number_list=number_list)
+
     return render_template("index.html")
