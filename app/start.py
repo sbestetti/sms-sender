@@ -3,6 +3,8 @@ import os
 from flask import Flask, request, flash, redirect, render_template
 from werkzeug.utils import secure_filename
 
+import runner
+
 application = Flask(__name__)
 application.config.from_object("settings")
 
@@ -35,5 +37,6 @@ def index():
                     filename
                 )
             )
+            runner.process_file(filename)
             return "File uploaded", 200
     return render_template("index.html")
