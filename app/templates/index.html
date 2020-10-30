@@ -3,32 +3,48 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-    <div id="title">
-        Bulk SMS Sender
+    <div class="jumbotron">
+        <h1>Bulk SMS Sender</h1>
+        <p>Use your own Twilio account to send SMS messages in bulk from any regular spreadsheet</p>
     </div>
-    <div id="disclaimer">
-        First, some important stuff:
-        <ul>
-            <li>This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
-            <li>This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
-            <li>You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us">this page</a></li>
-            <li>This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it</li>
-            <li>The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender">GitHub</a></li>
-        </ul>
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3>First, some important stuff</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
+                <li class="list-group-item">This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
+                <li class="list-group-item">You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us">this page</a></li>
+                <li class="list-group-item">This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it</li>
+                <li class="list-group-item">The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender">GitHub</a></li>
+            </ul>
+        </div>
     </div>
-    <div id="instructions">
-        How it works: you simply download a sample spreadsheet, fill it with your data, upload it to us with your tokens and we'll use <a href="https://www.twilio.com/docs/sms/api">Twilio's Messaging API</a> to send your SMS in bulk. Once it's done we'll show you a delivery report. Here's the detailed steps:
+    <div class="panel-heading">
+        <h3>Instructions</h3>
+    </div>
+    <p>
+        Here's the basics: use your favourite spreadsheet software (Excel, Google Sheets, etc) to create a sheet with 3 rows: From, To and Message. Fill it with your data, save it as CSV and upload it to us with your tokens. We'll use <a href="https://www.twilio.com/docs/sms/api">Twilio's Messaging API</a> to send your SMS in bulk. Once it's done we'll show you a delivery report. 
+        <h4>Here's the detailed steps:</h4>
         <ol>
-            <li>You'll need a Twilio account for this. Sign up for free at <a href="https://www.twilio.com/try-twilio">Twilio</a></li>
-            <li>Download the sample spreadsheet HERE. (Google Sheets integration coming soon)</li>
-            <li>Fill the spreadsheet with your data (phone numbers, message, etc). Please don't change the sheet's format or it won't work!</li>
-            <li>Make sure to add all phone numbers on the international format (+15551234)</li>
+            <li>You'll need a Twilio account with a phone number on it for this. Sign up for free at <a href="https://www.twilio.com/try-twilio">Twilio</a></li>
+            <li>
+                Use your favourite spreadsheet software to create a simple file with 3 columns:
+                <ul>
+                    <li>From number: your Twilio phone number that will be used to send your messages or an Alpha Sender ID. Check <a href="https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console">this article</a> for information on how to buy a number on Twilio.</li>
+                    <li>To number: the destination number to which the message should be delivered</li>
+                    <li>Message: the message itself</li>
+                </ul>
+            </li>
+            <li>Make sure to add all phone numbers on the international format, with the plus sign (+) in front of them (+15551234...). You might have to add a single quote mark (') in front of the number so it keeps the plus sign</li>
             <li>Once you are finished filling your data upload the file using the button below</li>
             <li>The file will be checked and, if everything's alright, you'll be taken to a screen to provide your Twilio credentials. You should really use Tokens! Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it </li>
-            <li>We'll use your tokens to send your messages through Twilio's API. Once it's finished we'll display a delivery report to you</li>
+            <li>We'll use your credentials or tokens to send your messages through Twilio's API. Once it's finished we'll display a delivery report to you</li>
             <li>Rinse and repeat</li>
         </ol>
-    </div>
+    </p>
+    <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" style="width: 50%; height: 50%px;" src="{{ url_for('static', filename='guide_001.png') }}" data-holder-rendered="true">
     <div id="upload_form">
         <form method="post" enctype="multipart/form-data">
             <input type="file" name="file">
