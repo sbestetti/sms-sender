@@ -9,27 +9,23 @@ application = Flask(__name__)
 application.config.from_object("settings")
 
 
-def allowed_file(filename):
-    return (
-        "." in filename
-        and filename.rsplit(".", 1)[1].lower()
-        in application.config["ALLOWED_EXTENSIONS"]
-        )
-
-
 @application.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        if request.form["sid"] == "" or request.form["token"] == "":
+            flash("Twilio ID and token required")
+            return redirect(request.url)
+
         if "file" not in request.files:
-            flash("No file part")
+            flash("No file selected")
             return redirect(request.url)
 
         file = request.files["file"]
         if file.filename == "":
-            flash("No selected file")
+            flash("No file selected")
             return redirect(request.url)
 
-        if file and allowed_file(file.filename):
+        if file and tools.allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(
                 os.path.join(
@@ -42,7 +38,10 @@ def index():
             wrong_numbers = tools.check_numbers(number_list)
 
             if wrong_numbers:
-                return render_template("wrong_numbers.html", number_list=wrong_numbers)
+                return render_template(
+                    "wrong_numbers.html",
+                    number_list=wrong_numbers
+                )
 
             number_list = tools.send_messages(number_list)
             return render_template("report.html", number_list=number_list)

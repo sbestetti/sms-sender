@@ -7,7 +7,7 @@
         <h1>Bulk SMS Sender</h1>
         <p>Use your own Twilio account to send SMS messages in bulk from a CSV file</p>
     </div>
-    <div class="panel panel-danger">
+    <div class="panel panel-warning">
         <div class="panel-heading">
             <h3>First, some important stuff</h3>
         </div>
@@ -45,13 +45,14 @@
         </ol>
     </p>
     <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" style="width: 50%; height: 50%px;" src="{{ url_for('static', filename='guide_001.png') }}" data-holder-rendered="true">
-    <div id="upload_form">
+    <div id="upload_form" class="form-inline">
         <form method="post" enctype="multipart/form-data">
-            <br><br>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Twilio Account SID" aria-describedby="basic-addon1" name="sid" size="50">
+                <input type="password" class="form-control" placeholder="Twilio Token" aria-describedby="basic-addon1" name="token" size="50">
+            </div>
             <input type="file" name="file">
-            <br>
             <input type="submit" value="Check file">
-            <br><br>
         </form>
     </div>
 {% endblock %}

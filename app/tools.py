@@ -9,6 +9,14 @@ import settings
 client = Client(settings.SID, settings.TOKEN)
 
 
+def allowed_file(filename):
+    return (
+        "." in filename
+        and filename.rsplit(".", 1)[1].lower()
+        in settings.ALLOWED_EXTENSIONS
+    )
+
+
 def check_numbers(numbers):
     numbers_not_found = list()
     for number in numbers:
