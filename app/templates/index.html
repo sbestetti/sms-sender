@@ -5,19 +5,19 @@
 {% block content %}
     <div class="jumbotron">
         <h1>Bulk SMS Sender</h1>
-        <p>Use your own Twilio account to send SMS messages in bulk from any regular spreadsheet</p>
+        <p>Use your own Twilio account to send SMS messages in bulk from a CSV file</p>
     </div>
     <div class="panel panel-danger">
         <div class="panel-heading">
             <h3>First, some important stuff</h3>
         </div>
         <div class="panel-body">
-            <ul class="list-group">
-                <li class="list-group-item">This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
-                <li class="list-group-item">This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
-                <li class="list-group-item">You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us">this page</a></li>
-                <li class="list-group-item">This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it</li>
-                <li class="list-group-item">The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender">GitHub</a></li>
+            <ul>
+                <li>This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
+                <li>This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
+                <li>You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us">this page</a></li>
+                <li>This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens">this page</a> for instructions on how to do it</li>
+                <li>The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender">GitHub</a></li>
             </ul>
         </div>
     </div>
@@ -47,8 +47,11 @@
     <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" style="width: 50%; height: 50%px;" src="{{ url_for('static', filename='guide_001.png') }}" data-holder-rendered="true">
     <div id="upload_form">
         <form method="post" enctype="multipart/form-data">
+            <br><br>
             <input type="file" name="file">
+            <br>
             <input type="submit" value="Check file">
+            <br><br>
         </form>
     </div>
 {% endblock %}
