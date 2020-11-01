@@ -2,11 +2,9 @@ import csv
 import os
 
 from twilio.rest import Client
-from twilio.base.exceptions import TwilioRestException
+from twilio.base.exceptions import TwilioRestException, TwilioException
 
 import settings
-
-client = Client(settings.SID, settings.TOKEN)
 
 
 def allowed_file(filename):
@@ -17,7 +15,17 @@ def allowed_file(filename):
     )
 
 
-def check_numbers(numbers):
+def valid_credentials(sid, token):
+    client = Client(sid, token)
+    try:
+        messages = client.messages.list(limit=1)
+    except TwilioException:
+        return False
+    return True
+
+
+def check_numbers(numbers, sid, token):
+    client = Client(sid, token)
     numbers_not_found = list()
     for number in numbers:
         try:
@@ -41,7 +49,8 @@ def get_number_list(filename):
     return number_list
 
 
-def send_messages(number_list):
+def send_messages(number_list, sid, token):
+    client = Client(sid, token)
     flag = 0
     while flag < len(number_list):
         message = client.messages.create(

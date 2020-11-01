@@ -16,6 +16,13 @@ def index():
             flash("Twilio ID and token required")
             return redirect(request.url)
 
+        sid = request.form["sid"]
+        token = request.form["token"]
+
+        if not tools.valid_credentials(sid, token):
+            flash("Invalid Twilio credentials. Please double check your Twilio account SID and token and try again")
+            return redirect(request.url)
+
         if "file" not in request.files:
             flash("No file selected")
             return redirect(request.url)
@@ -35,7 +42,7 @@ def index():
             )
 
             number_list = tools.get_number_list(filename)
-            wrong_numbers = tools.check_numbers(number_list)
+            wrong_numbers = tools.check_numbers(number_list, sid, token)
 
             if wrong_numbers:
                 return render_template(
@@ -43,7 +50,10 @@ def index():
                     number_list=wrong_numbers
                 )
 
-            number_list = tools.send_messages(number_list)
+            number_list = tools.send_messages(number_list, sid, token)
             return render_template("report.html", number_list=number_list)
+        else:
+            flash("File type not allowed. Please select a CSV file")
+            return redirect(request.url)
 
     return render_template("index.html")
