@@ -3,18 +3,14 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-    <div class="jumbotron">
-        <h1>Bulk SMS Sender</h1>
-        <p>Use your own Twilio account to send SMS messages in bulk from a CSV file. Get started for free!</p>
-    </div>
-    <div class="panel panel-warning">
+    <div class="panel panel-danger">
         <div class="panel-heading">
-            <h3>First, some important stuff</h3>
+            <h3 class="panel-title"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> First, some important stuff</h3>
         </div>
         <div class="panel-body">
             <ul>
                 <li>This site is not related to nor supported or endorsed by Twilio Inc. in any way</li>
-                <li>This site just provides a simple interface for Twilio's SMS service and it's free of charge and supported by ads</li>
+                <li>This site just provides a simple interface for Twilio's SMS service and it's usage is free of charge</li>
                 <li>You'll probably be charged by Twilio though. For the latest info on pricing please check <a href="https://www.twilio.com/sms/pricing/us" target="_blank">this page</a></li>
                 <li>This site doesn't store your credentials in any form but it's still safer to use tokens. Please check <a href="https://www.twilio.com/docs/iam/access-tokens#creating-tokens" target="_blank">this page</a> for instructions on how to do it</li>
                 <li>The source code for this site is available on <a href="https://github.com/sbestetti/sms-sender" target="_blank">GitHub</a></li>
@@ -22,38 +18,16 @@
             </ul>
         </div>
     </div>
-    <div class="panel-heading">
-        <h3>Instructions</h3>
-    </div>
     <p>
-        Here's the basics: use your favourite spreadsheet software (Excel, Google Sheets, etc) to create a sheet with 3 columns: From, To and Message. Fill it with your data, save it as CSV and upload it to us with your tokens. We'll use <a href="https://www.twilio.com/docs/sms/api">Twilio's Messaging API</a> to send your SMS in bulk. Once it's done we'll show you a delivery report. 
-        <h4>Here's the detailed steps:</h4>
-        <ol>
-            <li>You'll need a Twilio account with a phone number on it for this. Sign up for free at <a href="https://www.twilio.com/try-twilio" target="_blank">Twilio</a></li>
-            <li>
-                Use your favourite spreadsheet software (we recommend Google sheets, but anything that can save a CSV file will work) to create a simple file with 3 columns:
-                <ul>
-                    <li>From number: your Twilio phone number that will be used to send your messages or an Alpha Sender ID. Check <a href="https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console" target="_blank">this article</a> for information on how to buy a number on Twilio.</li>
-                    <li>To number: the destination number to which the message should be delivered</li>
-                    <li>Message: the message itself</li>
-                </ul>
-            </li>
-            <li>Make sure to include the complete number, including the country code. No need to add the plus sign</li>
-            <li>Once you are finished filling your data, save the file as CSV and upload it using the button below</li>
-            <li>The file will be checked and we'll list any invalid numbers for you to fix it</li>
-            <li>We'll use your credentials or tokens to send your messages through Twilio's API. Once it's finished we'll display a delivery report to you</li>
-            <li>Rinse and repeat</li>
-        </ol>
+        <div id="upload_form" class="form-inline">
+            <form method="post" enctype="multipart/form-data">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Twilio Account SID" aria-describedby="basic-addon1" name="sid" size="50">
+                    <input type="password" class="form-control" placeholder="Twilio Token" aria-describedby="basic-addon1" name="token" size="50">
+                </div>
+                <input type="file" name="file">
+                <input type="submit" value="Send messages">
+            </form>
+        </div>
     </p>
-    <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" style="width: 50%; height: 50%px;" src="{{ url_for('static', filename='guide_001.png') }}" data-holder-rendered="true">
-    <div id="upload_form" class="form-inline">
-        <form method="post" enctype="multipart/form-data">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Twilio Account SID" aria-describedby="basic-addon1" name="sid" size="50">
-                <input type="password" class="form-control" placeholder="Twilio Token" aria-describedby="basic-addon1" name="token" size="50">
-            </div>
-            <input type="file" name="file">
-            <input type="submit" value="Send messages">
-        </form>
-    </div>
 {% endblock %}

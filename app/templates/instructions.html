@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Instructions{% endblock %}
+
+{% block content %}
+    <h1>Instructions</h1>
+    <p>
+        <h3>First things first <small>what is Twilio?</small></h3>
+        Twilio is a platform that offers telecom services in a way that is easy for developers to integrate with applications. These services include SMS, Whatsapp, Voice calls, etc.
+        What they <strong>don't</strong> offer is a simple interface for people who doesn't know coding to use their services. And that's where this tool comes in.
+        This tools uses your Twilio account to send SMS messages from a simple spreadsheet file. You use your favourite spreadsheet tool (Excel, Google Sheets, etc) to create a simple
+        table with three columns:
+        <ol>
+            <li>The Twilio number that you'll be using to send your messages from</li>
+            <li>The destination number</li>
+            <li>The message itself</li>
+        </ol>
+        Add one row for each message you want to send, save the file and use the form at the end of this page to send your messages. That's it! Here's a detailed guide on how to generate the spreadsheet
+        file on the most common tools:<br>
+        <a href="sheets" target="_blank">Google Sheets</a><br>
+        <a href="excel" target="_blank">Microsoft Excel</a>
+    </p>
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h4>A word about passwords and security</h4>
+        </div>
+        <div class="panel-body">
+            As stated above, this site doesn't store your credentials in any way. But I wouldn't ask you to just take my word for it. That's why I recommend that you use a <strong>Token</strong>
+            instead of your Twilio password. This might be a bit advanced for most of the users but if you have some understanding of API security, please follow <a href="https://www.twilio.com/docs/iam/access-tokens" target="_blank">this article</a> to create
+            a token. You can just use a token on the "Password" field instead of your Twilio password.
+        </div>
+    </div>
+{% endblock %}
