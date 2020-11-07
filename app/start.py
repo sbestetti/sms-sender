@@ -9,6 +9,16 @@ application = Flask(__name__)
 application.config.from_object("settings")
 
 
+@application.route("/blog")
+def blog():
+    return render_template("blog.html")
+
+
+@application.route("/instructions")
+def instructions():
+    return render_template("instructions.html")
+
+
 @application.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
