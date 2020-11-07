@@ -4,22 +4,24 @@
 
 {% block content %}
     <h1>Instructions</h1>
+    
+    <h3>First things first <small>what is Twilio?</small></h3>
     <p>
-        <h3>First things first <small>what is Twilio?</small></h3>
         Twilio is a platform that offers telecom services in a way that is easy for developers to integrate with applications. These services include SMS, Whatsapp, Voice calls, etc.
         What they <strong>don't</strong> offer is a simple interface for people who doesn't know coding to use their services. And that's where this tool comes in.
-        This tools uses your Twilio account to send SMS messages from a simple spreadsheet file. You use your favourite spreadsheet tool (Excel, Google Sheets, etc) to create a simple
-        table with three columns:
-        <ol>
-            <li>The Twilio number that you'll be using to send your messages from</li>
-            <li>The destination number</li>
-            <li>The message itself</li>
-        </ol>
-        Add one row for each message you want to send, save the file and use the form at the end of this page to send your messages. That's it! Here's a detailed guide on how to generate the spreadsheet
-        file on the most common tools:<br>
-        <a href="sheets" target="_blank">Google Sheets</a><br>
-        <a href="excel" target="_blank">Microsoft Excel</a>
+        This tools uses your Twilio account to send SMS messages from a simple spreadsheet file. This guide will take you all the way from setting up your Twilio account to delivering your first message. Let's get started!
     </p>
+    
+
+    <h3>Getting a Twilio account and credentials<small> go ahead, it's free and doesn't require a credit card</small></h3>
+    <p>
+        First thing you'll need to do is signup for a Twilio account. Head on over to <a href="https://www.twilio.com/try-twilio" target="_blank">Twilio's signup page</a>, fill the form and hit "Start your free trial". Once you finish setting up your account
+        you'll be taken to your dashboard. This is where you'll get your <strong>Account SID</strong> and <strong>Token</strong>, which we'll use to send your messages. Check the following screenshot: the red boxes show you where these fields are on your dashboard.
+        Notice that your Token won't be visible. Click on the button shown to display your password. Save both the Account SID and Token, as we'll use them shortly.
+    </p>
+    <a href="{{ url_for('static', filename='tutorial_001.png') }}">
+        <img class="media-object" src="{{ url_for('static', filename='tutorial_001.png') }}" alt="Where to get your credentials" width="80%" height="80%" style="vertical-align:middle;margin:50px 50px">
+    </a>
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h4>A word about passwords and security</h4>
@@ -30,4 +32,16 @@
             a token. You can just use a token on the "Password" field instead of your Twilio password.
         </div>
     </div>
+
+    <!-- <ol>
+        <li>The Twilio number that you'll be using to send your messages from</li>
+        <li>The destination number</li>
+        <li>The message itself</li>
+    </ol>
+    Add one row for each message you want to send, save the file and use the form at the end of this page to send your messages. That's it! Here's a detailed guide on how to generate the spreadsheet
+    file on the most common tools:<br>
+    <a href="sheets" target="_blank">Google Sheets</a><br>
+    <a href="excel" target="_blank">Microsoft Excel</a> -->
+    
+    
 {% endblock %}
