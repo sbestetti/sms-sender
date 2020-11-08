@@ -13,15 +13,18 @@
     </p>
     
 
-    <h3>Getting a Twilio account and credentials<small> go ahead, it's free and doesn't require a credit card</small></h3>
-    <p>
-        First thing you'll need to do is signup for a Twilio account. Head on over to <a href="https://www.twilio.com/try-twilio" target="_blank">Twilio's signup page</a>, fill the form and hit "Start your free trial". Once you finish setting up your account
-        you'll be taken to your dashboard. This is where you'll get your <strong>Account SID</strong> and <strong>Token</strong>, which we'll use to send your messages. Check the following screenshot: the red boxes show you where these fields are on your dashboard.
-        Notice that your Token won't be visible. Click on the button shown to display your password. Save both the Account SID and Token, as we'll use them shortly.
-    </p>
-    <a href="{{ url_for('static', filename='tutorial_001.png') }}">
-        <img class="media-object" src="{{ url_for('static', filename='tutorial_001.png') }}" alt="Where to get your credentials" width="80%" height="80%" style="vertical-align:middle;margin:50px 50px">
-    </a>
+    <div class="mt-50">
+        <h3>1 - Getting a Twilio account and credentials<small> go ahead, it's free and doesn't require a credit card</small></h3>
+        <p>
+            First thing you'll need to do is signup for a Twilio account. Head on over to <a href="https://www.twilio.com/try-twilio" target="_blank">Twilio's signup page</a>, fill the form and hit "Start your free trial". Once you finish setting up your account
+            you'll be taken to your dashboard. This is where you'll get your <strong>Account SID</strong> and <strong>Token</strong>, which we'll use to send your messages. Check the following screenshot: the red boxes show you where these fields are on your dashboard.
+            Notice that your Token won't be visible. Click on the button shown to display your password. Save both the Account SID and Token, as we'll use them shortly.
+        </p>
+        <a href="{{ url_for('static', filename='tutorial_001.png') }}">
+            <img class="media-object" src="{{ url_for('static', filename='tutorial_001.png') }}" alt="Where to get your credentials" width="80%" height="80%" style="vertical-align:middle;margin:50px 50px">
+        </a>
+    </div>
+    
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h4>A word about passwords and security</h4>
@@ -33,15 +36,20 @@
         </div>
     </div>
 
-    <!-- <ol>
-        <li>The Twilio number that you'll be using to send your messages from</li>
-        <li>The destination number</li>
-        <li>The message itself</li>
-    </ol>
-    Add one row for each message you want to send, save the file and use the form at the end of this page to send your messages. That's it! Here's a detailed guide on how to generate the spreadsheet
-    file on the most common tools:<br>
-    <a href="sheets" target="_blank">Google Sheets</a><br>
-    <a href="excel" target="_blank">Microsoft Excel</a> -->
+
+    <div class="media mt-50">
+        <div class="media-body">
+            <h3 class="media-heading">2 - Getting a phone number</h3>
+            You'll probably need a phone number on your Twilio account in order to send your messages from. I say probably because there are ways of sending messages without a number. Click <a href="https://support.twilio.com/hc/en-us/articles/223181348-Alphanumeric-Sender-ID-for-Twilio-Programmable-SMS" target="_blank">here</a> to
+            read more about Alphanumeric Sender IDs. For now, let's stick with a regular number. On your Twilio Dashboard, click on the Hash symbol on the left side of the screen. If it's not visible, expand the menu by clicking on the "three dots" button at the bottom.
+        </div>
+        <div class="media-right media-middle">
+            <img class="media-object" src="{{ url_for('static', filename='tutorial_002.png') }}" alt="Getting a phone number">
+        </div>
+    </div>
+    
+
+    
     
     
 {% endblock %}
