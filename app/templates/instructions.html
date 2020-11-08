@@ -47,6 +47,28 @@
             <img class="media-object" src="{{ url_for('static', filename='tutorial_002.png') }}" alt="Getting a phone number">
         </div>
     </div>
+    <p>
+        On the "Active Numbers" screen, click on the blue "Buy a number" button on the top right corner. Select the country where you want your new number to be and make sure you check the box for "SMS", under <strong>Capabilites</strong>. This will ensure your new number can send SMS messages.
+        If you cannot find a number for your contry you can go with a US number as they have the best delivery rate anywhere in the world. Once this is done click on the red <strong>Search</strong> button. Pick a number for from the list and click on "Buy" on the right side. Review the charges
+        and confirm the purchase. Make note of the number as we'll need it when creating the document that will send your messages. That's all we need from Twilio right now. Next we are going to create the list of contacts to which we'll send the messages.
+    </p>
+
+    <div class="mt-50">
+        <h3>3 - Setting up the list of contacts and message</h3>
+        <p>
+            Now we'll use a spreadsheet software (like Excel) to create a list of contacts and messages that we'll use to send the SMS. I've done this example using Google Sheets but any software will do (Excel, Numbers, LibreOffice, etc):
+            <ol>
+                <li>Open your spreadsheet software and start by entering your Twilio phone number on the first cell (A1).</li>
+                <li>On the next column (B1) you enter the destination phone number. Make sure to include country and area code.</li>
+                <li>On the third column (C1) you enter the message you want to send.</li>
+            </ol>
+            That's it! You can copy and paste the message and Twilio phone number to all other rows if they are the same and just fill the B column with your destination phone numbers.
+        </p>
+        <a href="{{ url_for('static', filename='tutorial_001.png') }}">
+            <img class="media-object" src="{{ url_for('static', filename='tutorial_003.png') }}" alt="Sample sheet" style="vertical-align:middle;margin:50px 50px">
+        </a>
+    </div>
+    
     
 
     
