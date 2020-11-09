@@ -4,14 +4,13 @@
 
 {% block content %}
     <h1>Instructions</h1>
-    
+
     <h3>First things first <small>what is Twilio?</small></h3>
     <p>
         Twilio is a platform that offers telecom services in a way that is easy for developers to integrate with applications. These services include SMS, Whatsapp, Voice calls, etc.
         What they <strong>don't</strong> offer is a simple interface for people who doesn't know coding to use their services. And that's where this tool comes in.
         This tools uses your Twilio account to send SMS messages from a simple spreadsheet file. This guide will take you all the way from setting up your Twilio account to delivering your first message. Let's get started!
     </p>
-    
 
     <div class="mt-50">
         <h3>1 - Getting a Twilio account and credentials<small> go ahead, it's free and doesn't require a credit card</small></h3>
@@ -24,7 +23,7 @@
             <img class="media-object" src="{{ url_for('static', filename='tutorial_001.png') }}" alt="Where to get your credentials" width="80%" height="80%" style="vertical-align:middle;margin:50px 50px">
         </a>
     </div>
-    
+
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h4>A word about passwords and security</h4>
@@ -35,7 +34,6 @@
             a token. You can just use a token on the "Password" field instead of your Twilio password.
         </div>
     </div>
-
 
     <div class="media mt-50">
         <div class="media-body">
@@ -53,9 +51,9 @@
         and confirm the purchase. Make note of the number as we'll need it when creating the document that will send your messages. That's all we need from Twilio right now. Next we are going to create the list of contacts to which we'll send the messages.
     </p>
 
-    <div class="mt-50">
-        <h3>3 - Setting up the list of contacts and message</h3>
-        <p>
+    <div class="media mt-50">
+        <div class="media-body">
+            <h3 class="media-heading">3 - Setting up the list of contacts and message</h3>
             Now we'll use a spreadsheet software (like Excel) to create a list of contacts and messages that we'll use to send the SMS. I've done this example using Google Sheets but any software will do (Excel, Numbers, LibreOffice, etc):
             <ol>
                 <li>Open your spreadsheet software and start by entering your Twilio phone number on the first cell (A1).</li>
@@ -63,15 +61,23 @@
                 <li>On the third column (C1) you enter the message you want to send.</li>
             </ol>
             That's it! You can copy and paste the message and Twilio phone number to all other rows if they are the same and just fill the B column with your destination phone numbers.
-        </p>
-        <a href="{{ url_for('static', filename='tutorial_001.png') }}">
-            <img class="media-object" src="{{ url_for('static', filename='tutorial_003.png') }}" alt="Sample sheet" style="vertical-align:middle;margin:50px 50px">
-        </a>
+        </div>
+        <div class="media-right media-middle">
+            <a href="{{ url_for('static', filename='tutorial_003.png') }}">
+                <img class="media-object" src="{{ url_for('static', filename='tutorial_003.png') }}" alt="Sample sheet" style="vertical-align:middle;margin:50px 50px">
+            </a>
+        </div>
     </div>
-    
-    
 
-    
-    
-    
+    <h3>4 - Export the file and upload it to our website</h3>
+    <p>
+        Now you just need to save your spreadsheet on the format our site can use and upload it to us. How to do that might differ a bit from app to app:
+        <ul>
+            <li>On <strong>Google Sheets</strong> click on "File", "Download", "Comma-separated values (.csv, current sheet)</li>
+            <li>On <strong>Excel</strong> </li> click on "File" and then in "Save as". On the "File Format" box select "Comma Separated Values (.csv)"
+            <li>On <strong>Numbers for Mac</strong>click on "File", "Export to", "CSV" and proceed to save the file</li>
+            <li>On <strong>OpenOffice</strong></li> click on "File", "Save as" and set "File type" as "Text CSV (.csv)"
+        </ul>
+        Once you have you file ready go back to our <a href="{{ url_for('index') }}">home page</a> and use the form at the bottom to upload your file and Twilio credentials. That's it! If everything is alright we'll start sending your messages and once we are done we'll show you a full report, so please be patient!
+    </p>
 {% endblock %}

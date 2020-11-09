@@ -21,12 +21,18 @@
     <p>
         <div id="upload_form" class="form-inline">
             <form method="post" enctype="multipart/form-data">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Twilio Account SID" aria-describedby="basic-addon1" name="sid" size="50">
-                    <input type="password" class="form-control" placeholder="Twilio Token" aria-describedby="basic-addon1" name="token" size="50">
+                    <div class="mt-15">
+                        <input type="text" class="form-control" placeholder="Twilio Account SID" aria-describedby="basic-addon1" name="sid" size="50">
+                    </div>
+                    <div class="mt-15">
+                        <input type="password" class="form-control" placeholder="Twilio Token" aria-describedby="basic-addon1" name="token" size="50">
+                    </div>
+                <div class="mt-15">
+                    <input type="file" name="file">
                 </div>
-                <input type="file" name="file">
-                <input type="submit" value="Send messages">
+                <div class="mt-15">
+                    <input type="submit" value="Send messages">
+                </div>
             </form>
         </div>
     </p>
