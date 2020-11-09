@@ -20,7 +20,7 @@ def instructions():
 
 
 @application.route("/contact")
-def instructions():
+def contact():
     return render_template("contact.html")
 
 
