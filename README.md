@@ -1,4 +1,4 @@
-### Notice: this project is not supported or endorsed by Twilio Inc. in any way
+***Notice: this project is not supported or endorsed by Twilio Inc. in any way***
 
 # Bulk SMS Sender
 
