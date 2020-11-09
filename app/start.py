@@ -19,6 +19,11 @@ def instructions():
     return render_template("instructions.html")
 
 
+@application.route("/contact")
+def instructions():
+    return render_template("contact.html")
+
+
 @application.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
