@@ -1,5 +1,6 @@
 import csv
 import os
+from datetime import datetime
 
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException, TwilioException
@@ -18,7 +19,7 @@ def allowed_file(filename):
 def valid_credentials(sid, token):
     client = Client(sid, token)
     try:
-        messages = client.messages.list(limit=1)
+        client.messages.list(limit=1)
     except TwilioException:
         return False
     return True
@@ -64,4 +65,7 @@ def send_messages(number_list, sid, token):
     for item in number_list:
         current_message = client.messages.get(item[4]).fetch()
         item[3] = current_message.status
+    with open(settings.LOG_FILE, "a") as log_file:
+        log_string = f"{datetime.now()} - {len(number_list)} messages sent."
+        log_file.write(f"\n{log_string}")
     return number_list

@@ -1,9 +1,10 @@
 import os
+from datetime import datetime
 
 from flask import Flask, request, flash, redirect, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 
-import tools
+import tools, settings
 
 application = Flask(__name__)
 application.config.from_object("settings")
@@ -65,6 +66,9 @@ def index():
             wrong_numbers = tools.check_numbers(number_list, sid, token)
 
             if wrong_numbers:
+                with open(settings.LOG_FILE, "a") as log_file:
+                    log_string = f"{datetime.now()} - {len(wrong_numbers)} wrong numbers identified."
+                    log_file.write(f"\n{log_string}")
                 return render_template(
                     "wrong_numbers.html",
                     number_list=wrong_numbers
