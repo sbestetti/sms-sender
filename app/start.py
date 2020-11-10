@@ -1,12 +1,17 @@
 import os
 
-from flask import Flask, request, flash, redirect, render_template
+from flask import Flask, request, flash, redirect, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 
 import tools
 
 application = Flask(__name__)
 application.config.from_object("settings")
+
+
+@application.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(application.static_folder, request.path[1:])
 
 
 @application.route("/blog")
