@@ -6,22 +6,18 @@ from werkzeug.utils import secure_filename
 
 import tools, settings
 
-from views import blog
+from views import blog, instructions
 
 application = Flask(__name__)
 application.config.from_object("settings")
 
 application.register_blueprint(blog.bp)
+application.register_blueprint(instructions.bp)
 
 
 @application.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(application.static_folder, request.path[1:])
-
-
-@application.route("/instructions")
-def instructions():
-    return render_template("instructions.html")
 
 
 @application.route("/contact")
