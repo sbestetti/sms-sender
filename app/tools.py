@@ -5,7 +5,7 @@ from datetime import datetime
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException, TwilioException
 
-import settings
+from app import settings
 
 
 def allowed_file(filename):

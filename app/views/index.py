@@ -1,27 +1,22 @@
 import os
 from datetime import datetime
 
-from flask import Flask, request, flash, redirect, render_template, send_from_directory
+from flask import (
+    Blueprint,
+    request,
+    flash,
+    redirect,
+    render_template,
+)
+
 from werkzeug.utils import secure_filename
 
-import tools, settings
+from app import settings
+from app import tools
 
-from views import blog, instructions, contact
+bp = Blueprint('index', __name__, url_prefix='/')
 
-application = Flask(__name__)
-application.config.from_object("settings")
-
-application.register_blueprint(blog.bp)
-application.register_blueprint(instructions.bp)
-application.register_blueprint(contact.bp)
-
-
-@application.route('/sitemap.xml')
-def static_from_root():
-    return send_from_directory(application.static_folder, request.path[1:])
-
-
-@application.route("/", methods=["GET", "POST"])
+@bp.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         if request.form["sid"] == "" or request.form["token"] == "":
@@ -48,7 +43,7 @@ def index():
             filename = secure_filename(file.filename)
             file.save(
                 os.path.join(
-                    application.config["UPLOAD_FOLDER"],
+                    settings.UPLOAD_FOLDER,
                     filename
                 )
             )
