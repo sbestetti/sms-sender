@@ -1,5 +1,6 @@
 import csv
 import os
+import chardet
 from datetime import datetime
 
 from twilio.rest import Client
@@ -42,7 +43,16 @@ def get_number_list(filename):
         settings.UPLOAD_FOLDER,
         filename
     )
-    with open(file_path, "r") as csv_file:
+
+    # Routine to detect CSV file encoding
+    rawdata = open(file_path, "rb").read()
+    guessed_encoding = chardet.detect(rawdata)
+
+    with open(
+            file_path,
+            newline="",
+            mode="r",
+            encoding=guessed_encoding["encoding"]) as csv_file:
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
             number_list.append(row)
@@ -54,6 +64,8 @@ def send_messages(number_list, sid, token):
     client = Client(sid, token)
     flag = 0
     while flag < len(number_list):
+        sender_chars = [c for c in number_list[flag][0]]
+        print(sender_chars)
         message = client.messages.create(
             body=number_list[flag][2],
             from_=number_list[flag][0],
